@@ -1,0 +1,14 @@
+{
+    "settings": {
+        "emmet.excludeLanguages": [
+            "xsl",
+            "xslt"
+        ],
+        "github.gitProtocol": "ssh"
+    },
+    "folders": [
+        {
+            "path": "."
+        }
+    ]
+}
