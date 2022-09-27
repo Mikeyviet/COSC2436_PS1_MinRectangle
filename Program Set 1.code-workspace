@@ -4,7 +4,11 @@
             "xsl",
             "xslt"
         ],
-        "github.gitProtocol": "ssh"
+        "github.gitProtocol": "ssh",
+        "code-runner.saveFileBeforeRun": true,
+        "cSpell.words": [
+            "programset"
+        ]
     },
     "folders": [
         {

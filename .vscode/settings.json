@@ -2,5 +2,9 @@
     "emmet.excludeLanguages": [
         "xsl",
         "xslt"
+    ],
+    "code-runner.runInTerminal": true,
+    "cSpell.words": [
+        "programset"
     ]
 }
