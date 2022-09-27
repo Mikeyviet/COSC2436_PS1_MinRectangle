@@ -33,12 +33,14 @@ public class MinRectangleMN {
         do{
             // Prompt user for input
             System.out.println("This is a program that does something.");
-            System.out.print("Enter the number of rows (2-10): ");
+            System.out.print("Enter the number of rows (2-8): ");
             // read in the number of rows
             int rows = input.nextInt();
-            System.out.print("Enter the number of columns (2-10): ");
+            System.out.print("Enter the number of columns (2-8): ");
             // read in the number of columns
             int columns = input.nextInt();
+
+            System.out.println();
 
             // Create a 2D array
             int[][] matrix = new int[rows][columns];
@@ -49,7 +51,7 @@ public class MinRectangleMN {
                     matrix[i][j] = (int) (Math.random() * 2);
                 }
             }
-            // Print the array
+            // Print the array in matrix form
             for (int i = 0; i < matrix.length; i++) {
                 for (int j = 0; j < matrix[i].length; j++) {
                     System.out.print(matrix[i][j] + " ");
@@ -57,9 +59,40 @@ public class MinRectangleMN {
                 System.out.println();
             }
 
+            System.out.println();
+
+            // Print out the array values in MATRIX FORM with indices to find pattern
+            for(int i = 0; i < matrix.length; i++){
+                for(int j = 0; j < matrix[i].length; j++) {
+                    System.out.print("matrix[" + i + "][" + j + "] = " + matrix[i][j] + " ");
+                }
+                System.out.println();
+            }
+
+            System.out.println();
+
+            // Print out the array values in 1 row with indices to find pattern
+            for(int i = 0; i < matrix.length; i++){
+                for(int j = 0; j < matrix[i].length; j++) {
+                    System.out.println("matrix[" + i + "][" + j + "] = " + matrix[i][j] + " ");
+                }
+                System.out.println();
+            }
+
+            // Traverse the array and find all the 1's in the array
+            // for(int i = 0; i < matrix.length; i++){
+            //     for(int j = 0; j < matrix[i].length; j++) {
+            //         if()
+            //     }
+            // }
+
+
+
+                System.out.println();
             // Ask user if they want to continue
             System.out.print("Do you want to continue? (y/n): ");
             choice = input.next().charAt(0);
+            System.out.println();
 
         }while(choice != 'n');
     
