@@ -98,6 +98,14 @@ public class MinRectangleMN {
                         } else if(matrix[i][j-1] == 0) {
                             total++; // 1 found in column that is not first column and the column to the left is 0, count it
                         }
+                        // for the last cell in the column, if it has value of 1, need to check for value of 1 in first
+                        //     in the first column of current row
+                        if(j + 1 == matrix[i].length && matrix[i][j+1-columns] == 1) {
+                            total--; // 1 found in last column and 1 was also found in the first column so the total is reduced by 1
+                                     //     because the grouping will wrap around to the first column
+                        }
+                            
+                        
                     }
                 }
             }
