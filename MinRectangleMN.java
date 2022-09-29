@@ -31,10 +31,8 @@ public class MinRectangleMN {
         char choice = 'y';
         int rows = 0;
         int columns = 0;
-        int total = 0;
+        int foundTotal = 0;
         int countOfOnes = 0;   // Count of elements in row to check if all cells are 1
-
-
 
         do{
             // Prompt user for input
@@ -47,14 +45,11 @@ public class MinRectangleMN {
             columns = input.nextInt();
 
             System.out.println();
+            System.out.println("Generated grid: ");
+            System.out.println();
 
             // Create a 2D array
             int[][] matrix = new int[rows][columns];
-
-            // Create a 2D array to flag the columns if a 1 is found so that
-            // the column is not counted again and the 1 found in column will
-            // be grouped with the one directly above it
-            boolean[][]flag = new boolean[rows][columns];
 
             // Fill the array with random 0's and 1'size
             for (int i = 0; i < matrix.length; i++) 
@@ -76,28 +71,6 @@ public class MinRectangleMN {
 
             System.out.println();
 
-            // Print out the array values in MATRIX FORM with indices to find pattern
-            for(int i = 0; i < matrix.length; i++)
-            {
-                for(int j = 0; j < matrix[i].length; j++) 
-                {
-                    System.out.print("matrix[" + i + "][" + j + "] = " + matrix[i][j] + " ");
-                }
-                System.out.println();
-            }
-
-            System.out.println();
-
-            // Print out the array values in 1 row with indices to find pattern
-            // for(int i = 0; i < matrix.length; i++)
-            // {
-            //     for(int j = 0; j < matrix[i].length; j++) 
-            //     {
-            //         System.out.println("matrix[" + i + "][" + j + "] = " + matrix[i][j] + " ");
-            //     }
-            //     System.out.println();
-            // }
-
             // Traverse the array and find all the 1's in the array
             for(int i = 0; i < matrix.length; i++){
                 for(int j = 0; j < matrix[i].length; j++) 
@@ -106,29 +79,17 @@ public class MinRectangleMN {
                     {
                         // 1 found, ready for vertical grouping
                         countOfOnes++;
-                        flag[i][j] = true; 
                         if(j == 0)
                         {
-                            total++;
-                            System.out.println("Second Step: adding 1 found in 1st column. Total is now " + total);
-
+                            // 1 found in first column, ready for horizontal grouping
+                            foundTotal++;
                         } 
+                        //  Value 1 was found and the previous cell to the left was 0, so count this 1
                         else if(matrix[i][j-1] == 0) 
                         {
-                            total++;
-                            System.out.println("Third Step: adding one found in column. The total is now " + total); 
+                            //  increment over
+                            foundTotal++;
                         }
-
-                        // if(i > 0)
-                        // {
-                        //     if(matrix[i-1][j] == matrix[i][j])
-                        //     {
-                        //         total--;
-                        //     }
-                        // }
-
-
-                    
 
                         // For the last cell in the column, if it has value of 1, need to check for value of 1 in first
                         // in the first column of current row
@@ -138,27 +99,17 @@ public class MinRectangleMN {
                             // because the grouping will wrap around to the first column
                             if(countOfOnes != columns)
                             {
-                                total--;
-                                System.out.println("Fourth Step: 1 Found in last column but subtracting previous one: " + total);
+                                foundTotal--;
                             }
-                            System.out.println("The number of columns is: " + columns);
-                            System.out.println("The total is now " + total);
-
-                            countOfOnes = 0;
-
-
                         }
-
-
                     }
-
                 }
             }
 
             // Test print the total of 1's found horizontally grouped only in array
-            System.out.println("The total number of 1's found grouped horizontally is: " + total);
+            System.out.println("The least number of rectangles/squares formed is " + foundTotal);
             // Reset total to 0 for next run
-            total = 0;
+            foundTotal = 0;
 
             System.out.println();
             // Ask user if they want to continue
